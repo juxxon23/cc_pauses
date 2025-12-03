@@ -4,15 +4,18 @@ from selenium.webdriver.chrome.options import Options
 #from selenium.webdriver.firefox.firefox_profile import FirefoxProfile
 #from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 
 # set cons
 CLIPCHAMP_LOGIN_URL = 'https://app.clipchamp.com/login'
 
-DATA_ATTRIBUTE = "data-testid"
-OUTLOOK_DATA_ATTR = "provider-Microsoft1P"
-EMAIL_DATA_ATTR = "tile"
-PROJECT_DATA_ATTR = "create-project-button"
-BTN_DATA_ATTR = "primaryButton"
+DATA_ATTR = "data-testid"
+OUTLOOK_ATTR = "provider-Microsoft1P"
+EMAIL_ATTR = "tile"
+PROJECT_ATTR = "create-project-button"
+BTN_ATTR = "primaryButton"
+ROLE_ATTR = "role"
+TEXTBOX_ATTR = "textbox" 
 
 EMAIL_ID = "usernameEntry"
 VERIFICATION_EMAIL_ID = "proof-confirmation-email-input"
@@ -38,16 +41,18 @@ def main():
     select_outlook()
     driver.implicitly_wait(3)
     select_email()
-    driver.implicitly_wait(8)
+    driver.implicitly_wait(10)
     create_new_project()
     driver.implicitly_wait(3)
     select_record_create()
     driver.implicitly_wait(1)
     select_voiceover()
     driver.implicitly_wait(2)
-    #todo
-    #agregar texto 
-    #agregar pausas
+    textbox = select_textbox()
+    write_text(textbox)
+    add_pause(textbox)
+    write_text(textbox)
+    add_pause(textbox)
 
 
 def set_chrome_driver():
@@ -69,17 +74,17 @@ def set_firefox_driver():
 
 
 def select_outlook():
-    btn_action = elem_by_xpath(TAG_BTN, DATA_ATTRIBUTE, OUTLOOK_DATA_ATTR)
+    btn_action = elem_by_xpath(TAG_BTN, DATA_ATTR, OUTLOOK_ATTR)
     btn_action.click()
 
 
 def select_email():
-    btn_action = elem_by_xpath(TAG_DIV, DATA_ATTRIBUTE, EMAIL_DATA_ATTR)
+    btn_action = elem_by_xpath(TAG_DIV, DATA_ATTR, EMAIL_ATTR)
     btn_action.click()
 
 
 def create_new_project():
-    btn_action = elem_by_xpath(TAG_BTN, DATA_ATTRIBUTE, PROJECT_DATA_ATTR)
+    btn_action = elem_by_xpath(TAG_BTN, DATA_ATTR, PROJECT_ATTR)
     btn_action.click()
 
 
@@ -93,10 +98,24 @@ def select_voiceover():
     btn_action.click()
 
 
+def select_textbox():
+    textbox = elem_by_xpath(TAG_DIV, ROLE_ATTR, TEXTBOX_ATTR)
+    return textbox
+
+
+def write_text(text_box):
+    text_box.send_keys("hola..................")
+    
+
+def add_pause(text_box):
+    text_box.send_keys(Keys.SPACE)
+    text_box.send_keys(Keys.ENTER)
+
+
 def enter_email(id_email, val_email):
     inpt_email = driver.find_element(By.ID, id_email)
     inpt_email.send_keys(val_email)
-    btn_action = elem_by_xpath(TAG_BTN, DATA_ATTRIBUTE, BTN_DATA_ATTR)
+    btn_action = elem_by_xpath(TAG_BTN, DATA_ATTR, BTN_ATTR)
     btn_action.click()
 
 
@@ -115,3 +134,4 @@ def all_elem_by_xpath(tag, attr, val):
 if __name__ == "__main__":
     driver = set_chrome_driver()
     main()
+
