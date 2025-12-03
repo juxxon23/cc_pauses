@@ -1,0 +1,28 @@
+Selenium
+first script: - https://www.selenium.dev/documentation/webdriver/getting_started/first_script/?language=python
+waits: - https://www.selenium.dev/documentation/webdriver/waits/
+locators: 
+- https://www.selenium.dev/documentation/webdriver/elements/locators/
+- https://selenium-python.readthedocs.io/locating-elements.html
+StaleElementReferenceException: - https://stackoverflow.com/questions/27003423/staleelementreferenceexception-on-python-selenium
+get_attribute:
+- https://stackoverflow.com/questions/28426645/is-there-a-way-to-find-an-element-by-attributes-in-python-selenium
+- https://www.geeksforgeeks.org/python/get_attribute-element-method-selenium-python/
+- innerHTML: https://stackoverflow.com/questions/10251525/how-can-i-get-the-current-contents-of-an-element-in-webdriver
+ElementClickInterceptedException: 
+- https://es.stackoverflow.com/questions/309185/selenium-error-intercepted-not-clickable
+- https://stackoverflow.com/questions/57741875/selenium-common-exceptions-elementclickinterceptedexception-message-element-cl
+tag_name: - https://www.geeksforgeeks.org/python/tag_name-element-method-selenium-python/
+keyboard-actions: - https://www.selenium.dev/documentation/webdriver/actions_api/keyboard/#keys
+
+
+Python 
+f&t strings: - https://realpython.com/python-t-strings/
+if name == main: - https://www.datacamp.com/es/tutorial/if-name-equals-main-python
+
+
+Firefox
+perfiles: - about:profiles
+
+Chrome
+perfiles: - chrome://version
